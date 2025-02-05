@@ -18,4 +18,4 @@ RUN npm run build
 
 EXPOSE 7001
 
-CMD [ "serve", "-s", "dist", "-l", "7001", "--cors" ]
+CMD [ "serve", "-s", "dist", "-l", "7001" ]
