@@ -16,7 +16,6 @@ export default defineConfig({
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/App',
-        './LandingPage': './src/pages/LandingPage',
       },
       shared: ['react', 'react-dom', 'react-router-dom', 'react-ga4'],
     }),
@@ -38,5 +37,8 @@ export default defineConfig({
   },
   server: {
     port: 3001,
+  },
+  build: {
+    target: 'esnext',
   },
 });
