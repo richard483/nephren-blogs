@@ -1,0 +1,41 @@
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  #box {
+    width: 144px;
+    height: 144px;
+
+    &-grey {
+      @extend #box;
+    }
+
+    &-blue {
+      @extend #box;
+      right: 72px;
+      top: 232px;
+    }
+
+    &-x {
+      display: none;
+    }
+  }
+
+  .sub-content {
+    &-desc {
+      font-size: 1.25rem;
+    }
+
+    &-nephren {
+      &-bar-code {
+        font-size: 2rem;
+        line-height: 0.05;
+      }
+
+      &-desc {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}

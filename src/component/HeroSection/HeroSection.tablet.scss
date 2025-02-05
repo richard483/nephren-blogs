@@ -1,0 +1,49 @@
+@media only screen and (max-width: 1200px) {
+
+  #box {
+    width: 240px;
+    height: 240px;
+
+    &-grey {
+      @extend #box;
+    }
+
+    &-blue {
+      @extend #box;
+      right: 160px;
+    }
+
+    &-x {
+      @extend #box;
+      right: calc(50% - 76px);
+      bottom: 20%;
+      width: 152px;
+      height: 152px;
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .content-wrapper {
+    margin: 0 16px;
+  }
+
+  .sub-content {
+    &-desc {
+      font-size: 1.5rem;
+    }
+
+    &-nephren {
+      &-bar-code {
+        font-size: 3rem;
+        line-height: 0.15;
+      }
+
+      &-desc {
+        font-size: 1rem;
+      }
+    }
+  }
+}

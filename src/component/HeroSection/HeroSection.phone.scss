@@ -1,0 +1,55 @@
+@media only screen and (max-width: 600px) {
+  .content-wrapper {
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .items {
+    align-items: center;
+  }
+
+  .content-wrapper {
+    padding: 120px 0 48px;
+  }
+
+  .sub-content {
+    justify-content: end;
+
+    &-desc {
+      display: none;
+    }
+  }
+
+  #box {
+    width: 120px;
+    height: 120px;
+
+    &-grey {
+      @extend #box;
+      top: 280px;
+      right: 56px;
+    }
+
+    &-blue {
+      @extend #box;
+      left: 56px;
+      top: 368px
+    }
+
+    &-x {
+      @extend #box;
+      display: block;
+      top: 352px;
+      right: calc(50% - 96px);
+      width: 88px;
+      height: 88px;
+    }
+  }
+
+  .items {
+    margin: 75% 0 0 0;
+  }
+}
