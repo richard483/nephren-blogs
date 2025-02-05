@@ -4,11 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "local": "vite --port 7001 --strictPort",
-    "dev": "tsc -b && vite build && vite preview --port 7001 --strictPort",
+    "local": "vite --port 7001",
+    "dev": "vite",
+    "dev:watch": "concurrently \"npm run build:watch\" \"npm run preview\"",
     "build": "tsc -b && vite build",
+    "build:watch": "tsc -b && vite build --watch",
     "lint": "eslint .",
-    "preview": "vite preview --port 7001 --strictPort",
+    "preview": "vite preview --port 7001",
     "host": "vite --host"
   },
   "dependencies": {
@@ -24,6 +26,7 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "concurrently": "^9.1.2",
     "eslint": "^9.13.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
