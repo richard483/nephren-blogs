@@ -24,7 +24,8 @@
       "@/*": ["src/*"],
       "@component/*": ["src/component/*"],
       "@assets/*": ["src/assets/*"],
-      "@variables/*": ["src/_variables.scss"]
+      "@variables/*": ["src/_variables.scss"],
+      "@services/*": ["src/services/*"]
     }
   },
   "include": ["src"],
