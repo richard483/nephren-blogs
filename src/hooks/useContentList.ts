@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { getData } from '@services/api';
 import { ContentPreview } from '@/types';
 
-const localCache: { [key: string]: any } = {};
-
 function useContentList() {
   const [data, setData] = useState<ContentPreview[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -11,11 +9,6 @@ function useContentList() {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (localCache['data']) {
-        setData(localCache['data']);
-        setLoading(false);
-        return;
-      }
       try {
         const data = await getData(
           'https://api.github.com/repos/richard483/blogs-content/contents/blogs',
