@@ -1,10 +1,21 @@
 @use '@variables' as var;
 
+.title {
+  text-align: left;
+}
+
 .wrapper {
+  padding: 16px;
+  margin: 8px 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  background-color: rgba(var.$grey, 0.25);
+
+  &:hover {
+    background-color: rgba(var.$grey, 0.5);
+  }
 }
 
 .content {
@@ -13,14 +24,16 @@
 }
 
 .detail {
+  margin-top: 16px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1rem;
-  padding: 1rem;
   width: 70%;
 }
 
 .detail-item {
   display: flex;
+  flex-direction: row;
   gap: 0.5rem;
+  text-wrap: nowrap;
 }

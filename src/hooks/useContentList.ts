@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getData } from '@services/api';
 import { ContentPreview } from '@/types';
 
@@ -26,6 +26,7 @@ function useContentList() {
           const { name, path } = item;
           const { lastModified, author } = await fetchModifyData(path);
           return {
+            path: path,
             name: name.split(' - ').slice(1).join(': '),
             lastModified: new Date(lastModified).toLocaleDateString(),
             author: author,

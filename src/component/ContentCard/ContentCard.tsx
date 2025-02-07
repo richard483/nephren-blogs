@@ -1,4 +1,7 @@
 import './ContentCard.scss';
+import './ContentCard.tablet.scss';
+import './ContentCard.tablet-portrait.scss';
+import './ContentCard.phone.scss';
 
 function ContentCard({
   title,
@@ -18,7 +21,6 @@ function ContentCard({
             <small className="detail-item">Authored by {author}</small>
             <small className="detail-item">Last updated {updateDate}</small>
           </dl>
-          <button className="btn">Get started</button>
         </div>
       </div>
     </>
