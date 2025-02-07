@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { getData } from '@services/api';
+import { ContentPreview } from '@/types';
 
 const localCache: { [key: string]: any } = {};
 
 function useContentList() {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<ContentPreview[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(null);
 
@@ -19,7 +20,7 @@ function useContentList() {
         const data = await getData(
           'https://api.github.com/repos/richard483/blogs-content/contents/blogs',
         );
-        const mappedData = await Promise.all(mapData(data));
+        const mappedData: ContentPreview[] = await Promise.all(mapData(data));
         setData(mappedData);
       } catch (error) {
         setError(error);
@@ -27,14 +28,14 @@ function useContentList() {
         setLoading(false);
       }
 
-      function mapData(data: []) {
+      function mapData(data: []): Promise<ContentPreview>[] {
         return data.map(async (item: any) => {
           const { name, path } = item;
           const { lastModified, author } = await fetchModifyData(path);
           return {
             name: name.split(' - ').slice(1).join(': '),
-            lastModified: new Date(lastModified).toLocaleString(),
-            author,
+            lastModified: new Date(lastModified).toLocaleDateString(),
+            author: author,
           };
         });
       }

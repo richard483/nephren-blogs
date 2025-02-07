@@ -1,4 +1,6 @@
+import ContentCard from '@/component/ContentCard/ContentCard';
 import useContentList from '@/hooks/useContentList';
+import './HomePage.scss';
 
 function HomePage() {
   const contents = useContentList();
@@ -9,13 +11,16 @@ function HomePage() {
     return <div>Error: {contents.error.message}</div>;
   }
   return (
-    <div>
+    <div className="home-page">
       <h1>Content List</h1>
       <ul>
-        {contents.data.map((item: any, index: number) => (
-          <li key={index}>
-            {item.name} {item.lastModified} {item.author}
-          </li>
+        {contents.data?.map((item: any, index: number) => (
+          <ContentCard
+            key={index}
+            title={item.name}
+            author={item.author}
+            updateDate={item.lastModified}
+          />
         ))}
       </ul>
     </div>

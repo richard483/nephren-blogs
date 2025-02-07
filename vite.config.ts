@@ -40,6 +40,8 @@ export default defineConfig({
     port: 7001,
   },
   build: {
+    minify: true,
+    cssCodeSplit: false,
     target: 'esnext',
   },
 });
