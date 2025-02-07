@@ -33,12 +33,15 @@ export default defineConfig({
       '@variables': path.resolve(__dirname, 'src/_variables.scss'),
       '@assets': path.resolve(__dirname, 'src/assets'),
       '@component': path.resolve(__dirname, 'src/component'),
+      '@services': path.resolve(__dirname, 'src/services'),
     },
   },
   server: {
     port: 7001,
   },
   build: {
+    minify: true,
+    cssCodeSplit: false,
     target: 'esnext',
   },
 });
