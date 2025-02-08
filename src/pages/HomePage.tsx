@@ -2,11 +2,13 @@ import ContentCard from '@/component/ContentCard/ContentCard';
 import useContentList from '@/hooks/useContentList';
 import './HomePage.scss';
 import { NavLink } from 'react-router-dom';
-import { apiBaseResponse } from '@/types/commonApi.types.ts';
+import { ApiBaseResponse } from '@/types/commonApi.types.ts';
 import { ContentPreview } from '@/types';
 
 function HomePage() {
-  const contents: apiBaseResponse<ContentPreview[]> = useContentList();
+  const contents: ApiBaseResponse<ContentPreview[]> = (
+    useContentList as () => ApiBaseResponse<ContentPreview[]>
+  )();
   if (contents.loading) {
     return <div>Loading...</div>;
   }

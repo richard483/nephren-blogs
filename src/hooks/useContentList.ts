@@ -1,23 +1,13 @@
 import { useEffect, useState } from 'react';
 import { getData } from '@services/api';
-import { ContentPreview } from '@/types';
-import { apiBaseResponse } from '@/types/commonApi.types.ts';
+import {
+  ContentPreview,
+  GitHubCommitResponse,
+  GitHubContentResponse,
+} from '@/types';
+import { ApiBaseResponse } from '@/types/commonApi.types.ts';
 
-interface GitHubContentResponse {
-  name: string;
-  path: string;
-}
-
-interface GitHubCommitResponse {
-  commit: {
-    author: {
-      date: string;
-      name: string;
-    };
-  };
-}
-
-function useContentList(): apiBaseResponse<ContentPreview[]> {
+function useContentList(): ApiBaseResponse<ContentPreview[]> {
   const [data, setData] = useState<ContentPreview[]>(
     new Array<ContentPreview>(),
   );
@@ -67,9 +57,7 @@ function useContentList(): apiBaseResponse<ContentPreview[]> {
       ): Promise<{ lastModified: string; author: string }> {
         const normalizedPath = path.replace(/ /g, '%20');
 
-        const commitResponse: unknown = await getData<
-          GitHubCommitResponse | Error
-        >(
+        const commitResponse: unknown = await getData<GitHubCommitResponse[]>(
           `https://api.github.com/repos/richard483/blogs-content/commits?path=${normalizedPath}&per_page=1`,
         );
 
