@@ -1,28 +1,56 @@
 import { useEffect, useState } from 'react';
 import { getData } from '@services/api';
 import { ContentPreview } from '@/types';
+import { apiBaseResponse } from '@/types/commonApi.types.ts';
 
-function useContentList() {
-  const [data, setData] = useState<ContentPreview[] | null>(null);
+interface GitHubContentResponse {
+  name: string;
+  path: string;
+}
+
+interface GitHubCommitResponse {
+  commit: {
+    author: {
+      date: string;
+      name: string;
+    };
+  };
+}
+
+function useContentList(): apiBaseResponse<ContentPreview[]> {
+  const [data, setData] = useState<ContentPreview[]>(
+    new Array<ContentPreview>(),
+  );
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<any>(null);
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getData(
+        const data: unknown = await getData<GitHubContentResponse[]>(
           'https://api.github.com/repos/richard483/blogs-content/contents/blogs',
         );
-        const mappedData: ContentPreview[] = await Promise.all(mapData(data));
-        setData(mappedData);
+
+        const mappedData: unknown = await Promise.all(
+          mapData(data as GitHubContentResponse[]),
+        );
+
+        setData(mappedData as ContentPreview[]);
       } catch (error) {
-        setError(error);
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError(error as string);
+        }
+        setError(error as string);
       } finally {
         setLoading(false);
       }
 
-      function mapData(data: []): Promise<ContentPreview>[] {
-        return data.map(async (item: any) => {
+      function mapData(
+        data: GitHubContentResponse[],
+      ): Promise<ContentPreview>[] {
+        return data.map(async (item: GitHubContentResponse) => {
           const { name, path } = item;
           const { lastModified, author } = await fetchModifyData(path);
           return {
@@ -34,19 +62,31 @@ function useContentList() {
         });
       }
 
-      function fetchModifyData(path: string) {
+      async function fetchModifyData(
+        path: string,
+      ): Promise<{ lastModified: string; author: string }> {
         const normalizedPath = path.replace(/ /g, '%20');
-        return getData(
+
+        const commitResponse: unknown = await getData<
+          GitHubCommitResponse | Error
+        >(
           `https://api.github.com/repos/richard483/blogs-content/commits?path=${normalizedPath}&per_page=1`,
-        ).then((data: any) => {
-          return {
-            lastModified: data[0].commit.author.date,
-            author: data[0].commit.author.name,
-          };
-        });
+        );
+
+        const data = commitResponse as GitHubCommitResponse[];
+        return {
+          lastModified: data[0].commit.author.date,
+          author: data[0].commit.author.name,
+        };
       }
     };
-    fetchData();
+    fetchData().catch((error: unknown) => {
+      if (error instanceof Error) {
+        console.error('#useContentList - Error fetching data:', error.message);
+        return;
+      }
+      console.error('#useContentList - Error fetching data:', error);
+    });
   }, []);
 
   return { data, loading, error };
