@@ -19,7 +19,8 @@ body {
   height: 100%;
   width: 100%;
   padding: 0 0;
-  margin: 0 144px;
+  margin: 0 240px;
+  padding: 96px 0;
   max-width: 1152px;
   text-align: center;
   font-family: 'Aldrich', sans-serif;
@@ -37,5 +38,6 @@ body {
 @media only screen and (max-width: 600px) {
   #root {
     margin: 0 32px;
+    padding: 16px 0;
   }
 }

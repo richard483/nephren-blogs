@@ -6,9 +6,7 @@ import { ApiBaseResponse } from '@/types/commonApi.types.ts';
 import { ContentPreview } from '@/types';
 
 function HomePage() {
-  const contents: ApiBaseResponse<ContentPreview[]> = (
-    useContentList as () => ApiBaseResponse<ContentPreview[]>
-  )();
+  const contents: ApiBaseResponse<ContentPreview[]> = useContentList();
   if (contents.loading) {
     return <div>Loading...</div>;
   }

@@ -6,6 +6,6 @@ GlobalPipeline() {
 	appPort = "7001"
     networkName = "nephren-ui"
     buildArgs = [
-        VITE_GOOGLE_TAG: "${this.env.VITE_GOOGLE_TAG}"
+        VITE_GITHUB_TOKEN: "${this.env.VITE_GITHUB_TOKEN}"
     ]
 }

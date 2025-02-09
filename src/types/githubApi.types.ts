@@ -3,6 +3,7 @@ export interface ContentPreview {
   lastModified: string;
   author: string;
   path: string;
+  author_detail: GithubAuthorDetail;
 }
 
 export interface GitHubContentResponse {
@@ -17,4 +18,11 @@ export interface GitHubCommitResponse {
       name: string;
     };
   };
+  author: GithubAuthorDetail;
+}
+
+export interface GithubAuthorDetail {
+  avatar_url: string;
+  login: string;
+  url: string;
 }

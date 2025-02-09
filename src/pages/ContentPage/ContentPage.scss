@@ -1,13 +1,93 @@
 @use '@variables' as var;
 
-body {
-  overflow: scroll;
-}
-
-.home-page {
-  padding: 176px 0 120px;
-}
-
 h1 {
-  margin: 0 0 32px 0;
+  font-size: 3rem;
+  text-wrap: wrap;
+}
+
+.content-page {
+
+  h2 {
+    font-size: 2rem;
+    margin-top: 2rem;
+    text-align: start;
+  }
+
+  h3,
+  h4 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: start;
+  }
+
+  p,
+  ul,
+  li {
+    font-size: 1rem;
+    text-align: justify;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-left: 1rem;
+  }
+
+  p img {
+    display: block;
+    margin: 0 auto 2rem auto;
+    text-indent: 0;
+  }
+
+  img {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+
+  a {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  code {
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    background-color: rgba(var.$grey, 0.3);
+  }
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  &-content {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 1rem;
+  }
+
+  &-img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+  }
+
+  &-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+#divider {
+  width: 8px;
+  height: 72px;
+  background-color: rgba(var.$grey, 0.3);
+}
+
+hr {
+  border-color: rgba(var.$grey, 0.25);
+  height: 1px;
+  margin: 5vh 0;
 }
