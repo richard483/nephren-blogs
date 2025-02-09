@@ -6,6 +6,7 @@ import {
   GitHubContentResponse,
 } from '@/types';
 import { ApiBaseResponse } from '@/types/commonApi.types.ts';
+import { normalizedPath } from '../util';
 
 function useContentList(): ApiBaseResponse<ContentPreview[]> {
   const [data, setData] = useState<ContentPreview[]>(
@@ -55,10 +56,9 @@ function useContentList(): ApiBaseResponse<ContentPreview[]> {
       async function fetchModifyData(
         path: string,
       ): Promise<{ lastModified: string; author: string }> {
-        const normalizedPath = path.replace(/ /g, '%20');
 
         const commitResponse: unknown = await getData<GitHubCommitResponse[]>(
-          `https://api.github.com/repos/richard483/blogs-content/commits?path=${normalizedPath}&per_page=1`,
+          `https://api.github.com/repos/richard483/blogs-content/commits?path=${normalizedPath(path)}&per_page=1`,
         );
 
         const data = commitResponse as GitHubCommitResponse[];

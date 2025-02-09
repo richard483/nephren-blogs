@@ -1,5 +1,5 @@
-import ContentCard from '@/component/ContentCard/ContentCard';
-import useContentList from '@/hooks/useContentList';
+import ContentCard from '@component/ContentCard/ContentCard.tsx';
+import useContentList from '@/hooks/useContentList.ts';
 import './HomePage.scss';
 import { NavLink } from 'react-router-dom';
 import { ApiBaseResponse } from '@/types/commonApi.types.ts';
@@ -22,7 +22,7 @@ function HomePage() {
         {contents.data?.map((item: ContentPreview, index: number) => (
           <NavLink
             key={index}
-            to={`https://github.com/richard483/blogs-content/tree/master/${item.path}/id.md`}
+            to={`/${item.path}`}
           >
             <ContentCard
               title={item.name}
