@@ -1,12 +1,15 @@
 @use '@variables' as var;
 
+.content-wrapper {
+  height: auto;
+}
+
 h1 {
   font-size: 3rem;
   text-wrap: wrap;
 }
 
 .content-page {
-
   h2 {
     font-size: 2rem;
     margin-top: 2rem;
