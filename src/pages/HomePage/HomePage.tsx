@@ -1,14 +1,15 @@
-import ContentCard from '@/component/ContentCard/ContentCard';
-import useContentList from '@/hooks/useContentList';
+import ContentCard from '@component/ContentCard/ContentCard.tsx';
+import useContentList from '@/hooks/useContentList.ts';
 import './HomePage.scss';
+import './HomePage.tablet.scss';
+import './HomePage.tablet-portrait.scss';
+import './HomePage.phone.scss';
 import { NavLink } from 'react-router-dom';
 import { ApiBaseResponse } from '@/types/commonApi.types.ts';
 import { ContentPreview } from '@/types';
 
 function HomePage() {
-  const contents: ApiBaseResponse<ContentPreview[]> = (
-    useContentList as () => ApiBaseResponse<ContentPreview[]>
-  )();
+  const contents: ApiBaseResponse<ContentPreview[]> = useContentList();
   if (contents.loading) {
     return <div>Loading...</div>;
   }
@@ -22,7 +23,7 @@ function HomePage() {
         {contents.data?.map((item: ContentPreview, index: number) => (
           <NavLink
             key={index}
-            to={`https://github.com/richard483/blogs-content/tree/master/${item.path}/id.md`}
+            to={`/${item.path}`}
           >
             <ContentCard
               title={item.name}

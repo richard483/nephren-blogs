@@ -13,17 +13,15 @@ function ContentCard({
   updateDate: string;
 }) {
   return (
-    <>
-      <div className="wrapper">
-        <h2 className="title">{title}</h2>
-        <div className="content">
-          <dl className="detail">
-            <small className="detail-item">Authored by {author}</small>
-            <small className="detail-item">Last updated {updateDate}</small>
-          </dl>
-        </div>
+    <div className="wrapper">
+      <h2 className="title">{title}</h2>
+      <div className="content">
+        <dl className="detail">
+          <small className="detail-item">Authored by {author}</small>
+          <small className="detail-item content-updated">Last updated {updateDate}</small>
+        </dl>
       </div>
-    </>
+    </div>
   );
 }
 
