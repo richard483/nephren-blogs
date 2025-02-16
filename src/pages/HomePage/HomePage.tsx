@@ -1,6 +1,9 @@
 import ContentCard from '@component/ContentCard/ContentCard.tsx';
 import useContentList from '@/hooks/useContentList.ts';
 import './HomePage.scss';
+import './HomePage.tablet.scss';
+import './HomePage.tablet-portrait.scss';
+import './HomePage.phone.scss';
 import { NavLink } from 'react-router-dom';
 import { ApiBaseResponse } from '@/types/commonApi.types.ts';
 import { ContentPreview } from '@/types';

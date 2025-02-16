@@ -18,7 +18,7 @@ function ContentCard({
       <div className="content">
         <dl className="detail">
           <small className="detail-item">Authored by {author}</small>
-          <small className="detail-item">Last updated {updateDate}</small>
+          <small className="detail-item content-updated">Last updated {updateDate}</small>
         </dl>
       </div>
     </div>
