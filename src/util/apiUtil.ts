@@ -1,7 +1,17 @@
 export function normalizedPath(path: string): string {
-    return path.replace(/ /g, '%20');
+    if (!path) {
+        return "";
+    }
+    return encodeURIComponent(path.trim());
 }
 
 export function denormalizedPath(path: string): string {
-    return path.replace(/%20/g, ' ');
+    if (!path) {
+        return "";
+    }
+    try {
+        return decodeURIComponent(path);
+    } catch {
+        return path;
+    }
 }

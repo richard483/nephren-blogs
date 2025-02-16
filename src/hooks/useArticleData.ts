@@ -20,7 +20,6 @@ function useArticleData(article: string): ApiBaseResponse<string> {
         } else {
           setError(error as string);
         }
-        setError(error as string);
       } finally {
         setLoading(false);
       }
@@ -33,7 +32,7 @@ function useArticleData(article: string): ApiBaseResponse<string> {
       }
       console.error('#useArticleData - Error fetching data:', error);
     });
-  }, []);
+  }, [article]);
 
   return { data, loading, error };
 }

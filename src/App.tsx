@@ -6,7 +6,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path=":article" element={<ContentPage />} />
+      <Route path="/:article" element={<ContentPage />} />
       <Route path="/hello-world" element={'Hello Nephren Blogs!'} />
     </Routes>
   );

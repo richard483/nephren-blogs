@@ -1,8 +1,15 @@
 import axios from 'axios';
 import { Octokit } from 'octokit';
+import { GithubResponse } from '../types';
+
+const token = import.meta.env.VITE_GITHUB_TOKEN as string;
+
+if (!token) {
+  throw new Error('#api - GitHub token is required');
+}
 
 const octokit = new Octokit({
-  auth: import.meta.env.VITE_GITHUB_TOKEN as string,
+  auth: token,
 });
 
 async function getData<T>(url: string): Promise<T> {
@@ -10,7 +17,7 @@ async function getData<T>(url: string): Promise<T> {
   return response.data;
 }
 
-async function getGithubData(url: string): Promise<unknown> {
+async function getGithubData<T>(url: string): Promise<T> {
   const response = await octokit.request(url, {
     headers: {
       accept: 'application/vnd.github.v3+json',
@@ -18,7 +25,7 @@ async function getGithubData(url: string): Promise<unknown> {
       "X-GitHub-Api-Version": "2022-11-28",
     },
   });
-  return response.data as unknown;
+  return (response as GithubResponse<T>).data;
 }
 
 export { getData, getGithubData };

@@ -26,3 +26,7 @@ export interface GithubAuthorDetail {
   login: string;
   url: string;
 }
+
+export interface GithubResponse<T> {
+  data: T;
+}
