@@ -1,12 +1,11 @@
 @use '@variables' as var;
 
-.content-wrapper {}
-
-h1 {
-  font-size: 3rem;
-  text-wrap: wrap;
+.content-wrapper {
+  h1 {
+    font-size: 3rem;
+    text-wrap: wrap;
+  }
 }
-
 .content-page {
   h2 {
     font-size: 2rem;
@@ -81,7 +80,7 @@ h1 {
   }
 }
 
-#divider {
+.divider {
   width: 8px;
   height: 72px;
   background-color: rgba(var.$grey, 0.3);

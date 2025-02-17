@@ -1,0 +1,10 @@
+@use '@variables' as var;
+
+// tablet portrait
+@media only screen and (max-width: 768px) {
+  .home-page {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+}

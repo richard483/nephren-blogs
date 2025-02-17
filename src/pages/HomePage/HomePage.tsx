@@ -1,9 +1,6 @@
 import ContentCard from '@component/ContentCard/ContentCard.tsx';
 import useContentList from '@/hooks/useContentList.ts';
-import './HomePage.scss';
-import './HomePage.tablet.scss';
-import './HomePage.tablet-portrait.scss';
-import './HomePage.phone.scss';
+import styles from './HomePage.module.scss';
 import { NavLink } from 'react-router-dom';
 import { ApiBaseResponse } from '@/types/commonApi.types.ts';
 import { ContentPreview } from '@/types';
@@ -17,14 +14,11 @@ function HomePage() {
     return <div>Error: {contents.error}</div>;
   }
   return (
-    <div className="home-page">
+    <div className={styles['home-page']}>
       <h1>Content List</h1>
       <ul>
         {contents.data?.map((item: ContentPreview, index: number) => (
-          <NavLink
-            key={index}
-            to={`/${item.path}`}
-          >
+          <NavLink key={index} to={`/${item.path}`}>
             <ContentCard
               title={item.name}
               author={item.author}
