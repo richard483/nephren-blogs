@@ -37,3 +37,28 @@
   gap: 0.5rem;
   text-wrap: nowrap;
 }
+
+// tablet portrait
+@media only screen and (max-width: 768px) {
+  .detail {
+    flex-direction: column;
+    gap: 0.5rem;
+
+    small {
+      font-size: 0.75rem;
+    }
+  }
+
+  .wrapper {
+    .title {
+      font-size: 1rem;
+    }
+  }
+}
+
+// phone
+@media only screen and (max-width: 600px) {
+  .content-updated {
+    display: none;
+  }
+}
