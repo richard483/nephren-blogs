@@ -4,6 +4,8 @@
   h1 {
     font-size: 3rem;
     text-wrap: wrap;
+    text-align: start;
+    margin-bottom: 2rem;
   }
 }
 .content-page {
@@ -89,5 +91,25 @@
 hr {
   border-color: rgba(var.$grey, 0.25);
   height: 1px;
-  margin: 5vh 0;
+  margin: 3rem 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .content-wrapper {
+    h1 {
+      font-size: 2rem;
+      text-wrap: wrap;
+      text-align: start;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .content-page {
+    img {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
 }
