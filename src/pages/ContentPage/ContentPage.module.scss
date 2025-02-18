@@ -9,6 +9,10 @@
   }
 }
 .content-page {
+  code {
+    text-wrap-mode: initial;
+    text-wrap-style: auto;
+  }
   h2 {
     font-size: 2rem;
     margin: 4rem 0 2rem;
