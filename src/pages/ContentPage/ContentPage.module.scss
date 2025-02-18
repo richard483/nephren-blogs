@@ -9,6 +9,13 @@
   }
 }
 .content-page {
+  ul {
+    li {
+      p {
+        text-align: left;
+      }
+    }
+  }
   code {
     text-wrap-mode: initial;
     text-wrap-style: auto;
