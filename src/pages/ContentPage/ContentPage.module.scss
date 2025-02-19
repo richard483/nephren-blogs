@@ -1,6 +1,9 @@
 @use '@variables' as var;
 
 .content-wrapper {
+  max-width: 60rem;
+  align-self: center;
+
   h1 {
     font-size: 3rem;
     text-wrap: wrap;
@@ -8,6 +11,7 @@
     margin-bottom: 2rem;
   }
 }
+
 .content-page {
   ul {
     li {
@@ -22,14 +26,28 @@
       text-align: left;
     }
   }
+
   code {
     text-wrap-mode: initial;
     text-wrap-style: auto;
   }
+
   h2 {
-    font-size: 2rem;
-    margin: 4rem 0 2rem;
+    font-size: 2.5rem;
+    margin: 3rem 0 0.5rem;
     text-align: start;
+    display: flex;
+    flex-direction: column;
+
+    &::before {
+      content: '';
+      align-self: center;
+      width: 50%;
+      height: 4px;
+      background-color: rgba(var.$grey, 0.25);
+      border-radius: 2px;
+      margin: 0 auto 2rem auto;
+    }
   }
 
   h3,

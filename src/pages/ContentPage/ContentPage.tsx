@@ -56,9 +56,9 @@ function ContentPage() {
             title +
             ', ' +
             'written by ' +
-            authorDetail?.author_detail.login +
+            (authorDetail?.author_detail.login as string) +
             ' last updated at ' +
-            authorDetail?.lastModified
+            (authorDetail?.lastModified as string)
           }
         />
         <meta
@@ -67,9 +67,9 @@ function ContentPage() {
             title +
             ', ' +
             'written by ' +
-            authorDetail?.author_detail.login +
+            (authorDetail?.author_detail.login as string) +
             ' last updated at ' +
-            authorDetail?.lastModified
+            (authorDetail?.lastModified as string)
           }
         />
         <meta name="keywords" content={extractKeywordFromTitle(title)} />
@@ -77,11 +77,11 @@ function ContentPage() {
         <meta name="og:type" content="article" />
         <meta
           name="article:author"
-          content={'https://github.com/' + authorDetail?.author_detail.login}
+          content={'https://github.com/' + (authorDetail?.author_detail.login as string)}
         />
         <meta
           name="article:publisher"
-          content={'https://github.com/' + authorDetail?.author_detail.login}
+          content={'https://github.com/' + (authorDetail?.author_detail.login as string)}
         />
       </Helmet>
       {contents.loading && <div>Loading...</div>}
