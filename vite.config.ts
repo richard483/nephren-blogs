@@ -17,7 +17,13 @@ export default defineConfig({
       exposes: {
         './App': './src/App',
       },
-      shared: ['react', 'react-dom', 'react-router-dom', 'react-ga4'],
+      shared: [
+        'react',
+        'react-dom',
+        'react-router-dom',
+        'react-ga4',
+        'react-helmet-async',
+      ],
     }),
   ],
   css: {

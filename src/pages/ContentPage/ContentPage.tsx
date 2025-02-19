@@ -3,10 +3,11 @@ import { ApiBaseResponse } from '@/types/commonApi.types.ts';
 import useArticleData from '../../hooks/useArticleData';
 import Markdown from 'react-markdown';
 import { NavLink, useParams } from 'react-router-dom';
-import { denormalizedPath } from '../../util';
+import { denormalizedPath, extractKeywordFromTitle } from '../../util';
 import { fetchModifyData } from '../../services/githubApi';
 import { GithubAuthorDetail } from '../../types';
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 function ContentPage() {
   const { article } = useParams();
@@ -43,38 +44,73 @@ function ContentPage() {
         console.error('#ContentPage error on fetch modify data - ', error);
       });
   }, [article]);
-
-  if (contents.loading) {
-    return <div>Loading...</div>;
-  }
-  if (contents.error) {
-    return <div>Error: {contents.error}</div>;
-  }
   return (
-    <div className={styles['content-wrapper']}>
-      <h1>{title}</h1>
-      <NavLink
-        className={styles['author-info']}
-        to={`https://github.com/${authorDetail?.author_detail.login}`}
-      >
-        <div className={styles['author-info-content']}>
-          <img
-            className={styles['author-info-img']}
-            src={authorDetail?.author_detail.avatar_url}
-            alt={authorDetail?.author}
-          />
-          <span className={styles.divider} />
-          <div className={styles['author-info-detail']}>
-            <span>Author: {authorDetail?.author}</span>
-            <span>Last updated: {authorDetail?.lastModified}</span>
+    <>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="og:title" content={title} />
+        <meta property="og:url" content={window.location.href} />
+        <meta
+          name="description"
+          content={
+            title +
+            ', ' +
+            'written by ' +
+            authorDetail?.author_detail.login +
+            ' last updated at ' +
+            authorDetail?.lastModified
+          }
+        />
+        <meta
+          name="og:description"
+          content={
+            title +
+            ', ' +
+            'written by ' +
+            authorDetail?.author_detail.login +
+            ' last updated at ' +
+            authorDetail?.lastModified
+          }
+        />
+        <meta name="keywords" content={extractKeywordFromTitle(title)} />
+        <meta name="type" content="article" />
+        <meta name="og:type" content="article" />
+        <meta
+          name="article:author"
+          content={'https://github.com/' + authorDetail?.author_detail.login}
+        />
+        <meta
+          name="article:publisher"
+          content={'https://github.com/' + authorDetail?.author_detail.login}
+        />
+      </Helmet>
+      {contents.loading && <div>Loading...</div>}
+      {contents.error && <div>Error: {contents.error}</div>}
+      <div className={styles['content-wrapper']}>
+        <h1>{title}</h1>
+        <NavLink
+          className={styles['author-info']}
+          to={`https://github.com/${authorDetail?.author_detail.login}`}
+        >
+          <div className={styles['author-info-content']}>
+            <img
+              className={styles['author-info-img']}
+              src={authorDetail?.author_detail.avatar_url}
+              alt={authorDetail?.author}
+            />
+            <span className={styles.divider} />
+            <div className={styles['author-info-detail']}>
+              <span>Author: {authorDetail?.author}</span>
+              <span>Last updated: {authorDetail?.lastModified}</span>
+            </div>
           </div>
+        </NavLink>
+        <hr />
+        <div className={styles['content-page']}>
+          <Markdown>{contents.data}</Markdown>
         </div>
-      </NavLink>
-      <hr />
-      <div className={styles['content-page']}>
-        <Markdown>{contents.data}</Markdown>
       </div>
-    </div>
+    </>
   );
 }
 
