@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
-import {  getGithubData } from '@services/api';
-import {
-  ContentPreview,
-  GitHubContentResponse,
-} from '@/types';
+import { getGithubData } from '@services/api';
+import { ContentPreview, GitHubContentResponse } from '@/types';
 import { ApiBaseResponse } from '@/types/commonApi.types.ts';
 import { fetchContentPreview } from '../services/githubApi';
 
@@ -23,7 +20,7 @@ function useContentList(): ApiBaseResponse<ContentPreview[]> {
 
         const mappedData: unknown = await Promise.all(
           fetchContentPreview(data as GitHubContentResponse[]),
-        );
+        ).then((res) => res.sort((a, b) => (a.path > b.path ? -1 : 1)));
 
         setData(mappedData as ContentPreview[]);
       } catch (error) {
@@ -36,8 +33,6 @@ function useContentList(): ApiBaseResponse<ContentPreview[]> {
       } finally {
         setLoading(false);
       }
-
-
     };
     fetchData().catch((error: unknown) => {
       if (error instanceof Error) {
