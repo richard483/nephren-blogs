@@ -20,7 +20,7 @@ function useContentList(): ApiBaseResponse<ContentPreview[]> {
 
         const mappedData: unknown = await Promise.all(
           fetchContentPreview(data as GitHubContentResponse[]),
-        ).then((res) => res.sort((a, b) => (a.path < b.path ? -1 : 1)));
+        ).then((res) => res.sort((a, b) => (a.path > b.path ? -1 : 1)));
 
         setData(mappedData as ContentPreview[]);
       } catch (error) {
