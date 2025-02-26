@@ -1,5 +1,11 @@
 @use '@variables' as var;
 
+.home-page {
+  h1 {
+    color: var.$midnight;
+  }
+}
+
 // tablet portrait
 @media only screen and (max-width: 768px) {
   .home-page {

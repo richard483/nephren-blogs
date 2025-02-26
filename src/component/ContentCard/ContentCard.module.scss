@@ -16,6 +16,10 @@
   &:hover {
     background-color: rgba(var.$grey, 0.5);
   }
+
+  h2 {
+    color: var.$midnight;
+  }
 }
 
 .content {
