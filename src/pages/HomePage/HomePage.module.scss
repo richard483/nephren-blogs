@@ -1,8 +1,11 @@
 @use '@variables' as var;
 
 .home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
   h1 {
-    color: var.$midnight;
+    margin-bottom: 2rem;
   }
 }
 
