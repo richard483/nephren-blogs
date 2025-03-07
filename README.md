@@ -39,4 +39,4 @@ npm run dev:watch
 
 Related repository:
 
-- [Nephren UI Revamp](https://github.com/richard483/nephren-blogs.git)
+- [Nephren UI Revamp](https://github.com/richard483/nephren-ui-revamp.git)
