@@ -30,9 +30,24 @@
     }
   }
 
+  pre {
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: left;
+    border: 1px solid rgba(var.$grey, 0.25);
+  }
+  
   code {
     text-wrap-mode: initial;
     text-wrap-style: auto;
+    text-align: left;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    background-color: rgba(var.$grey, 0.3);
+  }
+
+  pre > code {
+    background-color: transparent;
   }
 
   h2 {
@@ -93,10 +108,25 @@
     color: var.$midnight;
   }
 
-  code {
-    font-family: 'Courier New', monospace;
-    font-size: 1rem;
-    background-color: rgba(var.$grey, 0.3);
+  table {
+    border: 1px solid rgba(var.$grey, 0.25);
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    text-align: left;
+    color: var.$midnight;
+
+    th {
+      padding: 1rem;
+      background-color: rgba(var.$grey, 0.25);
+      font-weight: bold;
+      color: var.$midnight;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(var.$grey, 0.25);
+    }    
   }
 }
 

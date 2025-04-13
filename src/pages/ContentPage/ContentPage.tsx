@@ -8,6 +8,7 @@ import { fetchModifyData } from '../../services/githubApi';
 import { GithubAuthorDetail } from '../../types';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import remarkGfm from 'remark-gfm';
 
 function ContentPage() {
   const { article } = useParams();
@@ -77,11 +78,17 @@ function ContentPage() {
         <meta name="og:type" content="article" />
         <meta
           name="article:author"
-          content={'https://github.com/' + (authorDetail?.author_detail.login as string)}
+          content={
+            'https://github.com/' +
+            (authorDetail?.author_detail.login as string)
+          }
         />
         <meta
           name="article:publisher"
-          content={'https://github.com/' + (authorDetail?.author_detail.login as string)}
+          content={
+            'https://github.com/' +
+            (authorDetail?.author_detail.login as string)
+          }
         />
       </Helmet>
       {contents.loading && <div>Loading...</div>}
@@ -107,7 +114,7 @@ function ContentPage() {
         </NavLink>
         <hr />
         <div className={styles['content-page']}>
-          <Markdown>{contents.data}</Markdown>
+          <Markdown remarkPlugins={[remarkGfm]}>{contents.data}</Markdown>
         </div>
       </div>
     </>
