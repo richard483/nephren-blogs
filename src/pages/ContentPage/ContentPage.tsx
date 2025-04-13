@@ -10,6 +10,13 @@ import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import remarkGfm from 'remark-gfm';
 
+/**
+ * Renders an article content page with its author details and SEO metadata.
+ *
+ * This React component extracts the article identifier from the URL parameters, fetches the associated article content and author information (including the last modification date) via the GitHub API, and dynamically sets meta tags for optimal SEO using Helmet. The component displays the article title, author details with a link to the GitHub profile, and renders the article content as GitHub Flavored Markdown using the Markdown component with remarkGfm. It also handles and displays loading and error states appropriately.
+ *
+ * @returns The JSX element representing the complete content page.
+ */
 function ContentPage() {
   const { article } = useParams();
   const [authorDetail, setAuthorDetail] = useState<{
