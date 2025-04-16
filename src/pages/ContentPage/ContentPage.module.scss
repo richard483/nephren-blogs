@@ -14,6 +14,9 @@
 }
 
 .content-page {
+  p {
+    font-family: 'Inder', sans-serif;
+  }
   ul {
     li {
       p {
@@ -36,8 +39,9 @@
     text-align: left;
     border: 1px solid rgba(var.$grey, 0.25);
   }
-  
+
   code {
+    color: var.$midnight;
     text-wrap-mode: initial;
     text-wrap-style: auto;
     text-align: left;
@@ -126,7 +130,7 @@
     td {
       padding: 1rem;
       border-bottom: 1px solid rgba(var.$grey, 0.25);
-    }    
+    }
   }
 }
 
