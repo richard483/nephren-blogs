@@ -1,11 +1,8 @@
 @Library('global-pipeline') _
 
-GlobalPipeline() {
-	dockerImage = "nephren-blogs:latest"
-	projectName = "nephren-blogs"
-	appPort = "7001"
-    networkName = "nephren-ui"
-    buildArgs = [
-        VITE_GITHUB_TOKEN: "${this.env.VITE_GITHUB_TOKEN}"
-    ]
+KubePipeline() {
+	dockerImage = "nephren-blog-kube:latest"
+	projectName = "nephren-blog-kube"
+	appPort = "80"
+    externalEndpointsIp = "10.10.10.12"
 }
