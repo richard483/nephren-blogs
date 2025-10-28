@@ -5,4 +5,5 @@ KubePipeline() {
 	projectName = "nephren-blog-kube"
 	appPort = "80"
     externalEndpointsIp = "10.10.10.12"
+	kubeNodePort = "30012"
 }
